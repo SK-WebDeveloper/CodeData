@@ -1,0 +1,29 @@
+#signup-form-div{
+    width: 25%;
+    height: 300px;
+    text-align: center;
+    margin: auto;
+    border-radius: 5px;
+    padding: 5px 0px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+input{
+    border: 1px solid grey;
+    margin-bottom: 10px;
+    padding: 5px 20px;
+    border-radius: 2px;
+}
+#submit{
+    border: 0;
+    background-color: #1A232E;
+    color: #93989E;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: auto;
+    padding: 5px 30px;
+    border-radius: 10px;
+}
+h1{
+    font-family: sans-serif;
+    margin-bottom: 50px;
+    color: #93989E;
+}

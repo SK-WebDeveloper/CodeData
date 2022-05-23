@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<style>
+  #navbar {
+    display: flex;
+    justify-content: center;
+
+  }
+
+  #show_products {
+    border: 2px solid teal;
+    padding: 5px 20px;
+    border-radius: 4px;
+
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  #products {
+    margin: auto;
+    width: 20%;
+    text-align: center;
+    padding: 10px 0px;
+    margin-bottom: 10px;
+  }
+
+  input {
+    margin-bottom: 10px;
+    border: 2px solid teal;
+    padding: 5px 20px;
+    border-radius: 4px;
+  }
+
+  #add_product {
+    display: flex;
+    text-align: center;
+    margin: auto;
+    padding: 5px 30px;
+    border-radius: 4px;
+    justify-content: center;
+    border: 2px solid teal;
+
+  }
+</style>
+
+<body>
+  <div id="navbar">
+    <!--Create Show Products button here, give id as "show_products". avoid making spelling mistakes in HTML id's-->
+    <button id="show_products"><a href="./inventory.html">Show Products</a></button>
+  </div>
+  <div>
+    <h2>Add Products</h2>
+    <!--Create a form here to accept product data from user, give form HTML id as "products"-->
+    <form id="products">
+      <input type="text" id="type" placeholder="Type of Product"><br>
+      <input type="text" id="desc" placeholder="Description of the product"><br>
+      <input type="number" id="price" placeholder="Price of Prodcut"><br>
+      <input type="url" id="image" placeholder="Enter Prodcut Url"> <br>
+
+      <!--Create four inputs to accept Type, Description, price, & image-->
+      <!--give the inputs following respective id's, "type", "desc", "price","image"-->
+      <!--create a "Add Product" button to submit form, give it html id as "add_product"-->
+    </form>
+    <button id="add_product">Add Product</button>
+  </div>
+</body>
+
+</html>
+<script src="./scripts/index.js"></script>

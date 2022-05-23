@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            height: 200vh;
+            font-family: 'Poppins', sans-serif;
+        }
+        #nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Open Sans', sans-serif;
+            position: fixed;
+            top: 0;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            background-color: white;
+        }
+        #nav>div:first-child {
+            font-family: sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: rgb(152, 113, 219);
+            padding: 1% 2%;
+            color: white;
+            margin-left: 5%;
+        }
+        #nav>div:last-child {
+            display: flex;
+            width: 50%;
+        }
+        #nav>div:last-child>p {
+            font-size: 15px;
+            margin-right: 5%;
+            font-weight: bold;
+        }
+        #nav>div:last-child>p:hover {
+            color: rgb(68, 134, 255);
+            cursor: pointer;
+        }
+        #container {
+            display: flex;
+            margin: auto;
+            width: 90%;
+        }
+        #container>div {
+            /* border: 1px solid red; */
+            width: 50%;
+        }
+        #left>p:first-child {
+            font-weight: bold;
+            color:rgb(68, 134, 255);
+            margin-top: 15%;
+        }
+        #left>p:nth-child(2) {
+            font-size: 36px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            margin-top: -1%;
+            line-height: 130%;
+        }#left>p:nth-child(2)~p {
+            color: gray;
+            font-size: 18px;
+            line-height: 160%;
+        }
+        #left>div {
+            display: flex;
+            align-items: center;
+            margin-top: 7%;
+        }
+        #left>div>img {
+            width: 35%;
+            border-radius: 5px;
+        }
+        #left>div>p {
+            font-size: 20px;
+            margin-left: 4%;
+            font-weight: bold;
+        }
+        #right {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+            padding: 2%;
+            margin-left: 3%;
+        }
+        #right>div {
+            box-shadow: #64646f33 0px 7px 29px 0px;
+            border-radius: 5px;
+            margin: auto;
+            height: 80%;
+            width: 75%;
+            padding: 10%;
+        }
+        #right>div>p:first-of-type {
+            font-size: 19px;
+            font-weight: bold;
+        }
+        #right>div>p:last-of-type {
+            color: gray;
+            /* font-size: 18px; */
+            line-height: 160%;
+        }
+        #right>div>img {
+            width: 50%;
+            margin-left: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <div>StudyLab</div>
+        <div>
+            <p>Home</p>
+            <p>About</p>
+            <p>Course</p>
+            <p>Instructor</p>
+            <p>Blog</p>
+            <p>Contact</p>
+        </div>
+    </div>
+    <div id="container">
+        <div id="left">
+            <p>WELCOME TO STYDYLAB</p>
+            <p>We Are StudyLab An Online Learning Center</p>
+            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove rigth at the coast of the Semantics, a large language ocean.</p>
+            <div>
+                <img src="https://eccles.utah.edu/wp-content/uploads/2015/04/Study-Group-web.jpeg" alt="">
+                <p>Learn anything from StudyLab, Watch video</p>
+            </div>
+        </div>
+        <div id="right">
+            <div>
+                <img src="https://www.clipartmax.com/png/small/101-1011863_join-us-studying-icon.png" alt="">
+                <p>Top Quality Content</p>
+                <p>A small river named Duden flows by their place and supplies</p>
+            </div>
+            <div>
+                <img src="https://www.clipartmax.com/png/small/101-1011863_join-us-studying-icon.png" alt="">
+                <p>Highly Skilled Instructor</p>
+                <p>A small river named Duden flows by their place and supplies</p>
+            </div>
+            <div>
+                <img src="https://www.clipartmax.com/png/small/101-1011863_join-us-studying-icon.png" alt="">
+                <p>World Class & Quiz</p>
+                <p>A small river named Duden flows by their place and supplies</p>
+            </div>
+            <div>
+                <img src="https://www.clipartmax.com/png/small/101-1011863_join-us-studying-icon.png" alt="">
+                <p>Get Certified</p>
+                <p>A small river named Duden flows by their place and supplies</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

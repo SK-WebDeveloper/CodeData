@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend</title>
+    <link rel="stylesheet" href="../Movie App IV/index.css">
+    <link rel="stylesheet" href="./navbar.css">
+    <link rel="shortcut icon" href="https://w7.pngwing.com/pngs/942/965/png-transparent-application-programming-interface-backend-invention-computer-icons-computer-software-frontend-service-business-invention-thumbnail.png" type="image/x-icon">
+
+</head>
+
+<body>
+    <div id="navbar">
+        <div id="details">
+            <a href="../Movie App IV/frontend.html">Frontend</a>
+            <a href="">Login</a>
+            <a href="">Signup</a>
+        </div>
+    </div>
+    <h1>Enter Movie Data</h1>
+    <form id="container" onsubmit="storeData(event)">
+        <input type="text" id="name" placeholder="Enter Movie Name" required><br>
+        <input type="date" id="date" placeholder="Release Date" required><br>
+        <input type="url" id="poster" placeholder="Poster URL" required><br>
+        <input type="number" id="rating" placeholder="IMDb" required><br>
+        <input type="submit" id="button">
+    </form>
+    <div id="display"></div>
+</body>
+
+</html>
+<script src="../Movie App IV/index.js"></script>

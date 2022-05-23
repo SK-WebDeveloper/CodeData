@@ -1,0 +1,10 @@
+#slideshow{
+    width: 99%;
+    margin: auto;
+    
+}
+#slideshow>img{
+    width: 100%;
+    height: 70vh;
+
+}

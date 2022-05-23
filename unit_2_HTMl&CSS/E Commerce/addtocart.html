@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="..\E-COMMERCE NAVBAR\navbar.css">
+    <style>
+        * {
+            font-family: sans-serif;
+        }
+        #cart-head>h2{
+            color: blueviolet;
+            font-size: 50px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        #cart-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #cart-head>div {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            gap: 10px;
+            font-weight: bold;
+            width: 70%;
+        }
+        #cart-head>div>input {
+            border: 3px solid teal;
+            border-radius: 5px;
+            padding: 0.5% 5% 0.5% 3%;
+        }
+        button~p {
+            border: 3px solid teal;
+            padding: 0.3% 1%;
+            border-radius: 5px;
+        }
+        #cart-head>div>button {
+            border: 3px solid rgb(0, 119, 255);
+            border-radius: 5px;
+            padding: 0.5% 2% 0.5% 2%;
+            background-color: rgb(0, 119, 255);
+            color: white;
+            font-weight: bold;
+        }
+        #container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 17px;
+        width: 97%;
+        margin: auto;
+        }
+        #container>div {
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+        }
+        #container>div>img {
+            width: 100%;
+        }
+        img+p {
+            font-size: 12px;
+            font-weight: bold;
+        }
+        #container>div>div {
+            display: flex;
+            margin-left: 5%;
+            margin-top: -3%;
+            align-items: center;
+        }
+        #container>div>div>p {
+            margin-right: 5%;
+        }
+        #container>div>div>p:last-child {
+            font-size: 12px;
+            text-decoration: line-through;
+            color: gray;
+        }
+        #container>div>p {
+            margin-left: 5%;
+        }
+        #container>div>button {
+            font-weight: bold;
+            margin-bottom: 5%;
+            margin-left: 5%;
+            padding: 1% 5%;
+            border-radius: 7px;
+            border: 3px solid tomato;
+            background-color: tomato;
+            color: white;
+        }
+        #container>div>div:last-of-type {
+            font-weight: bold;
+        }
+        #container>div>div>button {
+            border-radius: 5px;
+            border: 3px solid rgb(255, 221, 0);
+            background-color: rgb(255, 221, 0);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <div id="company">
+            <p><a href="../E Commerce/Assignment/navbar.html">Reebok</a></p>
+        </div>
+        <div id="pages">
+            <p><a href="../E Commerce/Assignment/mens.html">Men</a></p>
+            <p><a href="../E Commerce/Assignment/womens.html">Women</a></p>
+            <p><a href="../E Commerce/Assignment/login.html">Login</a></p>
+            <p><a href="../E Commerce/Assignment/signup.html">Signup</a></p>
+        </div>
+    </div>
+    <div id="cart-head">
+        <h2>Cart</h2>
+        <div>
+            <input id="inputPromo" type="text">
+            <button id="promo">Apply Promo</button>
+            <p id="item">Item : 0</p>
+            <p id="price">Total Price : 0</p>
+        </div>
+    </div>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    var container = document.querySelector('#container');
+    var cartItems = JSON.parse(localStorage.getItem('localCart')) || [];
+    var sum = 0;
+    var n = cartItems.length;
+    
+    cartItems.forEach(function(el, index) {
+
+        var count = 1;
+
+        var card = document.createElement('div')
+
+        var img = document.createElement('img');
+        img.src = el.image_url;
+
+        var name = document.createElement('p');
+        name.innerText = el.name;
+
+        var box = document.createElement('div');
+
+        var price = document.createElement('p');
+        price.innerText = el.price;
+        sum += +(el.price);
+
+        var strikedoffprice = document.createElement('p');
+        strikedoffprice.innerText = el.strikedoffprice;
+
+        var button = document.createElement('button');
+        button.innerText = 'Delete';
+        button.addEventListener('click', function() {
+            event.target.parentNode.remove();
+            cartItems.splice(index, 1);
+            localStorage.setItem('localCart', JSON.stringify(cartItems));
+            sum -= el.price;
+            document.querySelector('#item').innerText = 'Item : '+cartItems.length;
+            document.querySelector('#price').innerText = 'Total Price : ₹ '+sum;
+        });
+        
+        var lilBox = document.createElement('div');
+
+        var quantity = document.createElement('p');
+        quantity.innerText = 'Qty : ';
+
+        var quantityValue = document.createElement('p');
+        quantityValue.innerText = count;
+
+        var add = document.createElement('button');
+        add.innerText = 'Add';
+        add.addEventListener('click', function() {
+            counter(quantityValue, el);
+        })
+
+        function counter(quantityValue, el) {
+            count++;
+            n++;
+            sum += +(el.price);
+            quantityValue.innerText = count;
+            document.querySelector('#item').innerText = 'Item : '+n;
+            document.querySelector('#price').innerText = 'Total Price : ₹ '+sum;
+        }
+
+        document.querySelector('#item').innerText = 'Item : '+cartItems.length;
+        document.querySelector('#price').innerText = 'Total Price : ₹ '+sum;
+
+        lilBox.append(quantity,quantityValue, add);
+        box.append(price, strikedoffprice);
+        card.append(img, name, box, lilBox, button);
+        container.append(card);
+    })
+
+    var c = 0;
+
+    document.querySelector('#promo').addEventListener('click',function(el) {
+        var input = document.querySelector('#inputPromo').value;
+        c++;
+
+        if(input == 'masai30' && c == 1) {
+            sum = sum*0.7;
+            document.querySelector('#price').innerText = 'Total Price : ₹ '+sum;
+        }
+    })
+</script>

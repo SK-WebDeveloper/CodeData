@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admitted</title>
+    <style>
+      .delete {
+        color: red;
+        cursor: pointer;
+      }
+    </style>
+    <link rel="stylesheet" href="commonStyles.css" />
+  </head>
+
+  <body>
+    <div id="links">
+      <div><a href="index.html">Home</a></div>
+      <div><a href="applied.html">Applied Jobs</a></div>
+      <div><a href="bookmark.html">Bookmarks</a></div>
+    </div>
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Job Applied</th>
+            <th>Salary</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody id="body"></tbody>
+      </table>
+    </main>
+  </body>
+  <script>
+    //you need to code here
+    var table = document.querySelector("#body")
+
+    var bookMarkArr = JSON.parse(localStorage.getItem("bookmarks"))
+    displayData(bookMarkArr)
+
+    function displayData(data)
+    {
+      // console.log(jobArr)
+      data.forEach(function (elem, index){
+        console.log(elem)
+        var tr = document.createElement("tr");
+
+        var Name = document.createElement("td");
+        Name.innerText = elem.name;
+
+        var Email = document.createElement("td");
+        Email.innerText = elem.email;
+
+        var Role = document.createElement("td");
+        Role.innerText = elem.role;
+
+        var Salary = document.createElement("td");
+        Salary.innerText = elem.salary;
+
+        var Delete = document.createElement("td");
+        Delete.innerText = "Delete"
+        Delete.setAttribute("class","delete")
+        Delete.addEventListener("click",function(){
+          deleteItem(elem, index)
+        })
+
+        tr.append(Name,Email,Role,Salary,Delete)
+        table.append(tr)
+      })
+    }
+
+    function deleteItem(elem, index)
+    {
+      bookMarkArr.splice(index,1)
+      localStorage.setItem("bookmarks", JSON.stringify(bookMarkArr))
+      window.location.reload()
+    }
+  </script>
+</html>

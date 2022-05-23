@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Database</title>
+    <link rel="stylesheet" href="commonStyles.css" />
+  </head>
+
+  <body>
+    <div id="links">
+      <div><a href="index.html">Home</a></div>
+      <div><a href="contact.html">Contact List</a></div>
+      <div><a href="favourites.html">Favourites</a></div>
+    </div>
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>Contact Name</th>
+            <th>Mobile Number</th>
+            <th>Type</th>
+            <th>Favourites</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Append your output to tbody -->
+        </tbody>
+      </table>
+    </main>
+  </body>
+  <script>
+    //code your js part here
+    //append your output to tbody
+    var table = document.querySelector("tbody")
+    var contactList = JSON.parse(localStorage.getItem("contactList"))
+
+    displayData(contactList)
+
+    var favourites = JSON.parse(localStorage.getItem("favourites")) || []
+
+    function displayData()
+    {
+      data.forEach(function(elem){
+
+        var tr = document.createElement("tr")
+        
+        var name = document.createElement("td")
+        name.innerText = elem.name;
+
+        var mobile = document.createElement("td")
+        mobile.innerText = elem.mobile;
+
+        var type = document.createElement("td")
+        type.innerText = elem.type
+
+        var favourite = document.createElement("td")
+        favourite.innerText = "favourite"
+        favourite.style.color = "blue"
+        favourite.style.cursor = "pointer"
+        favourite.addEventListener("click",function(){
+          favouriteFun(elem)
+        })
+        tr.append(name,mbile,type,favourite)
+        table.append(tr)
+      })
+      
+    }
+
+    function favouriteFun(elem)
+    {
+        favourites.push(elem)
+        localStorage.setItem("favourites",JSON.stringify(favourites))
+    }
+  </script>
+</html>

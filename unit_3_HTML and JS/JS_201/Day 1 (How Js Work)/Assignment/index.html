@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Throw Dice</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            padding: 20px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            width: 20%;
+            height: 300px;
+            margin:auto;
+            margin-top:50px;
+            background-color: rgb(245, 236, 236);
+        }
+        #winner{
+            display: flex;
+            border-radius: 10px;
+            width: 100%;
+            height: 18%;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            margin-bottom: 20px;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+        #dice{
+            display: flex;
+            gap: 20px;
+            height: 30%;
+            margin-bottom: 20px;
+            text-align: center;
+            align-items: center;
+            
+        }
+        #dice>div{
+            display: flex;
+            width: 100%;
+            height: 90%;
+            border: 0;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            border-radius: 10px;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+
+        }
+        #roll {
+            background: #e231e2;
+            border-radius: 999px;
+            box-shadow: #e231e2 0 10px 20px -10px;
+            color: #FFFFFF;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+            padding: 8px 18px;
+            border: 0;
+            margin-left: 55px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="winner">Winner</div>
+        <div id="dice">
+            <div id="member-1">A</div>
+            <div id="member-2">B</div>
+            <div id="member-3">C</div>
+        </div>
+        <button id="roll">ROLL THE DICE</button>
+    </div>
+    
+</body>
+</html>
+<script>
+    var Winner = document.getElementById("winner");
+
+    var MemberA = document.getElementById("member-1");
+    var MemberB = document.getElementById("member-2");
+    var MemberC = document.getElementById("member-3");
+
+    var Button = document.getElementById("roll");
+    Button.addEventListener("click", function(){
+        d1 = Math.floor(Math.random()*6) + 1;
+        d2 = Math.floor(Math.random()*6) + 1;
+        d3 = Math.floor(Math.random()*6) + 1;
+
+        MemberA.innerText = d1;
+        MemberA.style.backgroundColor = color(d1, d2, d3);
+        MemberA.style.color = 'white'
+
+        MemberB.innerText = d2;
+        MemberB.style.backgroundColor = color(d2, d3, d1)
+        MemberB.style.color = 'white'
+
+        MemberC.innerText = d3;
+        MemberC.style.backgroundColor = color(d3, d1, d2)
+        MemberC.style.color = 'white'
+
+        Winner.innerText = Won(d1, d2, d3)
+        Winner.style.backgroundColor = 'teal'
+        Winner.style.color = 'white'
+    })
+
+    function Won(A, B, C)
+    {
+        if(A>B && A>C){
+            return 'Member A';
+        }
+        else if(B>A && B>C){
+            return 'Member B';
+        }
+        else if(C>A && C>B){
+            return 'Member C';
+        }
+        else if(A>B && A==C){
+            return 'Draw (A & C)'
+        }
+        else if(B>C && B==A){
+            return 'Draw (A & B)'
+        }
+        else if(B>A && B==C){
+            return 'Draw (B & C)'
+        }
+        else{
+            return 'Draw!'
+        }
+    }
+
+    function color(A, B, C)
+    {
+        if(A>B && A>C){
+            return 'green';
+        }
+        else if(A<B && A<C){
+            return 'red';
+        }
+        else if((A<B && A<C) || (A<B && A>C)){
+            return '#F7DB00'
+        }
+        else{
+            return 'blue'
+        }
+    }
+
+
+</script>

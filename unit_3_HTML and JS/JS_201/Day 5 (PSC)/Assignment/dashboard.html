@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="..//Assignment/dashboard.css">
+  <link rel="stylesheet" href="../Assignment/navbar.css">
+</head>
+
+<body>
+  <div id="navbar">
+    <a href="index.html" id="home">Home</a>
+    <div id="scount">
+      <p id="web18">WEB-18 </p>
+      <p id="web19">WEB-19 </p>
+      <p id="web20">WEB-20 </p>
+    </div>
+  </div>
+  <h1>Student Management System</h1>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Batch</th>
+          <th>Unit</th>
+          <th>Course</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</body>
+
+</html>
+
+<script>
+  let data = JSON.parse(localStorage.getItem('student')) || [];
+  let trash = JSON.parse(localStorage.getItem('trash')) || [];
+
+  let web_18 = 0;
+  let web_19 = 0;
+  let web_20 = 0;
+
+  data.forEach(function (el, index) {
+
+    let tr = document.createElement("tr");
+
+    let td1 = document.createElement("td");
+    let student_avatar = document.createElement("img");
+    student_avatar.src = el.image
+    td1.append(student_avatar);
+
+    var td2 = document.createElement("td");
+    td2.innerText = el.name;
+
+    var td3 = document.createElement("td");
+    td3.innerText = el.batch;
+
+    if(el.batch=="FT WEB-18"){
+      web_18++;
+    }
+    else if(el.batch=="FT WEB-19"){
+      web_19++
+    }
+    else if(el.batch=="FT WEB-20"){
+      web_20++
+    }
+
+    var td4 = document.createElement("td");
+    td4.innerText = el.unit;
+
+    var td5 = document.createElement("td");
+    td5.innerText = el.course;
+
+    var td6 = document.createElement("td");
+    td6.innerText = "Delete";
+    td6.style.backgroundColor = "red";
+    td6.style.cursor = "pointer";
+    td6.addEventListener("click", function (event) {
+      event.target.parentNode.remove();
+      let deleteItem = data.splice(index, 1);
+      trash.push(deleteItem);
+      localStorage.setItem('student', JSON.stringify(data));
+      localStorage.setItem('trash', JSON.stringify(trash))
+      window.location.reload()
+
+    })
+
+    tr.append(td1, td2, td3, td4, td5, td6);
+    document.querySelector("tbody").append(tr);
+
+    document.querySelector("#web18").innerText = "WEB-18 : "+web_18;
+    document.querySelector("#web19").innerText = "| WEB-19 : "+web_19;
+    document.querySelector("#web20").innerText = "| WEB-20 : "+web_20;
+  })
+
+</script>

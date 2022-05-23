@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../Assignment/index.css">
+    <link rel="stylesheet" href="../Assignment/navbar.css">
+</head>
+
+<body>
+    <div id="navbar">
+        <a href="dashboard.html">Dashboard</a>
+        <div id="scount">
+            <p id="web17">WEB-18 <span></span></p>
+            <p id="web17">WEB-19 <span></span></p>
+            <p id="web17">WEB-20 <span></span></p>
+        </div>
+    </div>
+    <h1>Student Management System</h1>
+    <form id="student_data" onsubmit="storeData(event)">
+        <label for="">Student Image</label><br />
+        <input id="image" type="text" placeholder="Enter Image URL" /><br />
+        <label for="">Student Name</label><br />
+        <input id="name" type="text" placeholder="Enter Student Name" /><br />
+        <label for="">Batch </label><br />
+        <select id="batch">
+            <option value="">Select Batch</option>
+            <option value="FT WEB-18">FT WEB-18</option>
+            <option value="FT WEB-19">FT WEB-19</option>
+            <option value="FT WEB-20">FT WEB-20</option>
+        </select><br />
+        <label for="">Unit </label><br />
+        <input id="unit" type="number" placeholder="Enter Unit" /><br />
+        <label for="">Course </label><br />
+        <input id="course" type="text" placeholder="Enter Course" /><br />
+        <input type="submit" />
+    </form>
+</body>
+
+</html>
+<script src="../Assignment/index.js"></script>

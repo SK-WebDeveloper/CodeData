@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: sans-serif;
+        }
+        #container{
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+            margin: auto;
+        }
+        body>h1{
+            text-align: center;
+            font-size: 34px;
+        }
+        #container>div{
+            text-align: center;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: 10px;
+        }
+        .photo{
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        p+img{
+            width: 50%;
+            line-height: 0%;
+        }
+        p{
+            line-height: 0px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Strategic Investors</h1>
+    <div id="container"></div>
+    
+</body>
+</html>
+<script>
+    var cards = document.querySelector("#container")
+
+    var data = [
+        {   image: "https://masai-website-images.s3.ap-south-1.amazonaws.com/Vijay_Shekhar_Sharma_Paytm_96f52579b8.jpg",
+            name:"Vijay Shekhar Sharma",
+            role:"Founder & CEO",
+            logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg",
+        },
+        {   image: "https://masai-website-images.s3.ap-south-1.amazonaws.com/Rectangle_427_637d69bb57.png",
+            name:"Kunal Shah",
+            role:"Founder",
+            logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/cred_0a47d7b4f8.png",
+        },
+        {   image: "https://masai-website-images.s3.ap-south-1.amazonaws.com/amrish_rau_pine_labs_144e5e587c.jpg",
+            name:"Amrish Rau",
+            role:"CEO",
+            logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/pine_labs_0aa2407434.png",
+        },
+        {   image: "https://masai-website-images.s3.ap-south-1.amazonaws.com/Sampad_swain_Instamojo_f12bf6341e.jpg",
+            name:"Sampad Swain",
+            role:"Co-Founder & CEO",
+            logo:"https://masai-website-images.s3.ap-south-1.amazonaws.com/instamojo_8763e704f7.png",
+        }
+    ]
+
+    data.forEach(function(elem){
+        var box = document.createElement("div")
+
+        var image = document.createElement("img")
+        image.setAttribute("src",elem.image);
+        image.setAttribute("class","photo");
+
+        var name = document.createElement("h3")
+        name.innerText = elem.name
+
+        var role = document.createElement("p")
+        role.innerText = elem.role;
+
+        var logo = document.createElement("img")
+        logo.setAttribute("src",elem.logo)
+
+        box.append(image,name,role,logo)
+        cards.append(box)
+    })
+
+
+</script>

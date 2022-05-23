@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    body
+    {
+      background-color: rgb(244,247,255);
+    }
+    #header
+    {
+      text-align:center;
+    }
+    #blogs-container
+    {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      /* grid-template-rows: 350px; */
+      gap: 40px;
+      margin: auto;
+      margin-top: 50px;
+      background-color: white;
+    }
+    #blogs-container>div
+    {
+      line-height: 10px;
+      font-family: sans-serif;
+    }
+    #blogs-container>div>img+p
+    {
+      color: grey;
+      font-weight: bold;
+    }
+    img
+    {
+      width: 100%;
+    }
+    #catagory-container
+    {
+      width: 90%;
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      grid-template-rows: repeat(2,350px);
+      margin: auto;
+      gap: 10px;
+      
+      margin-top: 30px;
+    }
+    #catagory-container>div
+    {
+      margin: auto;
+      border: 1px solid teal;
+      background-color: white;
+    }
+    #catagory-container>div>img
+    {
+      background-color: white;
+    }
+    /* Medium screens */
+    @media all and (min-width:451px) and (max-width:750px) {}
+
+
+    /* Small Screens */
+    @media all and (min-width:100px) and (max-width:450px) {}
+  </style>
+</head>
+
+<body>
+  <div id="header">
+    <h1>Our Blog Posts</h1>
+  </div>
+  <div id="blogs-container">
+    <!-- All the Blogs will be here  -->
+    <div>
+      <!-- the images, date and the blog heading will be here  -->
+      <img src="https://www.ofdesign.net/wp-content/uploads/files/2/1/9/proper-care-for-the-garden-makes-a-beautiful-outside-view-0-219.jpg" alt="">
+      <p>29, January 2019</p>
+      <h3>Architectural Art Modern</h3>
+    </div>
+    <div>
+      <!-- the images, date and the blog heading will be here  -->
+      <img src="https://media.istockphoto.com/photos/beautiful-living-room-interior-with-hardwood-floors-and-and-view-of-picture-id1208205959?k=20&m=1208205959&s=612x612&w=0&h=bd4L_M7u2hPksL11njclcxgMWezFgSnKW1gBs9K-Xn0=" alt="">
+      <p>29, January 2019</p>
+      <h3>Architectural Art Modern</h3>
+    </div>
+    <div>
+      <!-- the images, date and the blog heading will be here  -->
+      <img src="https://www.ofdesign.net/wp-content/uploads/files/2/1/9/proper-care-for-the-garden-makes-a-beautiful-outside-view-0-219.jpg" alt="">
+      <p>29, January 2019</p>
+      <h2>Architectural Art Modern</h2>
+    </div>
+  </div>
+  <div id="catagory-container">
+    <!-- All the boxes for blog catagory goes here  -->
+    <div>
+      <!-- The image, h3 tag, p tag etc will be here  -->
+      <img src="https://www.nicepng.com/png/detail/279-2795639_clipart-transparent-web-development-web-app-icon-png.png" alt="">
+      <h3>Creative Design</h3>
+      <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+    </div>
+    <div>
+      <!-- The image, h3 tag, p tag etc will be here  -->
+      <img src="" alt="">
+      <h3>Creative Design</h3>
+      <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+    </div>
+    <div>
+      <!-- The image, h3 tag, p tag etc will be here  -->
+      <img src="" alt="">
+      <h3>Creative Design</h3>
+      <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+    </div>
+    <div>
+      <!-- The image, h3 tag, p tag etc will be here  -->
+      <img src="" alt="">
+      <h3>Creative Design</h3>
+      <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+    </div>
+    <div>
+      <!-- The image, h3 tag, p tag etc will be here  -->
+      <img src="" alt="">
+      <h3>Creative Design</h3>
+      <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+    </div>
+    <div>
+      <!-- The image, h3 tag, p tag etc will be here  -->
+      <img src="" alt="">
+      <h3>Creative Design</h3>
+      <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+    </div>
+    <div>
+      <!-- The image, h3 tag, p tag etc will be here  -->
+      <img src="" alt="">
+      <h3>Creative Design</h3>
+      <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+    </div>
+    <div>
+      <!-- The image, h3 tag, p tag etc will be here  -->
+      <img src="" alt="">
+      <h3>Creative Design</h3>
+      <p>Far far away, behind the word mountains, far from the countries Vokalia</p>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web 18 Unit-2 C3</title>
+  <style>
+    #reports {
+      width: 80%;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 50px;
+      margin: auto;
+
+    }
+
+    #reports>div {
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      padding: 15px;
+      border: 1px solid teal;
+      margin: auto;
+
+    }
+
+    button {
+      background-color: red;
+      color: aliceblue;
+      padding: 5px;
+      border: 0px;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+
+    input,
+    select {
+      display: block;
+      margin: auto;
+      margin-bottom: 10px;
+      border: 1px solid teal;
+      border-radius: 5px;
+      padding: 5px;
+    }
+
+    #container>div>h1 {
+      text-align: center;
+      color: teal;
+    }
+
+    input[type="submit"] {
+      background-color: teal;
+      color: white;
+      margin-bottom: 50px;
+    }
+
+    input[type="submit"]:hover {
+      background-color: red;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <div>
+      <h1>Bozaz Products</h1>
+      <form id="form">
+        <!-- When this form get submitted update the DOM According to the question -->
+        <select id="category">
+          <option value="">Product category</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Furniture">Furniture</option>
+          <option value="Home Appliance">Home Appliance</option>
+          <option value="Books">Books</option>
+        </select>
+        <input placeholder="Product Title" id="title" type="text" />
+        <input placeholder="Product description" id="product" type="text" />
+        <input placeholder="Product Price" id="price" type="number" />
+        <input type="submit" />
+      </form>
+    </div>
+    <div id="reports">
+      <!-- All the cards that get appended with Javascript on form submit goes here -->
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+
+  var reports = document.querySelector("#reports");
+  var form = document.querySelector("#form");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault()
+
+    var data = {
+      category: form.category.value,
+      title: form.title.value,
+      product: form.product.value,
+      price: form.price.value,
+
+    }
+    display(data)
+    // console.log(data)
+  })
+
+  function display(data) {
+    var parent = document.createElement("div")
+
+    var category = document.createElement("h2")
+    category.innerText = data.category
+
+    if (data.category == "Electronics") {
+      category.style.color = "blue"
+    }
+    if (data.category == "Furniture") {
+      category.style.color = "brown"
+    }
+    if (data.category == "Home Appliance") {
+      category.style.color = "orange"
+    }
+    if (data.category == "Books") {
+      category.style.color = "green"
+    }
+
+    var title = document.createElement("p")
+    title.innerText = data.title
+
+    var product = document.createElement("p")
+    product.innerText = data.product
+
+    var price = document.createElement("p")
+    price.innerText = data.price
+
+    var button = document.createElement("button")
+    button.innerText = "Delete"
+    button.addEventListener("click", function (event) {
+      event.target.parentNode.remove()
+    })
+    reports.append(parent)
+    parent.append(category, title, product, price, button)
+  }
+
+</script>

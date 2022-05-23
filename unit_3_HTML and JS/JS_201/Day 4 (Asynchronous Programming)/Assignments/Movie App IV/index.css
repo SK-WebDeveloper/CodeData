@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+#container {
+    width: 18%;
+    padding: 20px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    margin: auto;
+}
+
+#container>input {
+    margin-right: 10px;
+}
+
+#name,
+#date,
+#poster,
+#rating {
+    padding: 5px;
+    border: 1px solid #11ebf3;
+    border-radius: 5px;
+}
+
+#button {
+    padding: 5px 30px;
+    background-color: rgb(14, 164, 184);
+    color: white;
+    border: 0;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+input {
+    margin-bottom: 10px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: teal;
+}
+
+#date {
+    padding-right: 23%;
+}
+
+#button {
+    cursor: pointer;
+}

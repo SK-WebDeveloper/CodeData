@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <input type=number placeholder="Input a" id="input1">
+    <input type=number placeholder="Input b" id="input2">
+    <button>Find Exponent</button>
+    <p id="p">Result</p>
+</body>
+</html>
+
+<script>
+    var x = document.querySelector("button").addEventListener("click",Exponent)
+    function Exponent()
+    {
+        var value1 = document.getElementById("input1").value
+        var value2 = document.getElementById("input2").value
+        var result = '1'
+        for(var i=1; i<=value2; i++)
+        {
+            result = result*value1
+        }
+        var para = document.getElementById("p").innerText = result
+        var p = "your output is "
+        alert(p+value1+"^"+value2+" = "+para)
+    }
+    
+</script>

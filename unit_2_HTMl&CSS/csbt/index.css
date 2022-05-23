@@ -1,0 +1,15 @@
+#main
+{
+    
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
+#main>div
+{
+    font-size: 20px;
+    height: 200px;
+    /* border: 1px solid blue; */
+    background-color: red;
+    color: white;
+}

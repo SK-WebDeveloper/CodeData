@@ -1,0 +1,36 @@
+.nav
+{
+    width:100%;
+    display: flex;
+    border-radius: 10px;
+    background-color: rgb(47, 47, 56);
+    margin: auto;
+    color: white;
+}
+.logo
+{
+    width: 20%;
+    margin: auto;
+    margin-left: 5%;
+}
+.text
+{
+    /* border: 1px solid red; */
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+    margin-left: 40%;
+}
+.user
+{
+    /* border: 1px solid; */
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+}
+a
+{
+    text-decoration: none;
+    color: white;
+}

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Database</title>
+    <link rel="stylesheet" href="commonStyles.css" />
+    <style>
+      select
+      {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="links">
+      <div><a href="index.html">Home</a></div>
+      <div><a href="applied.html">Applied Jobs</a></div>
+      <div><a href="bookmark.html">Bookmarks</a></div>
+    </div>
+    <!-- sort by name -->
+    <select id="sortN" onChange="handlename()">
+      <option>Sort By Name</option>
+      <option value="asc">Ascending</op>
+      <option value="dsc">Descending</option>
+    </select>
+    <select id="sortS" onChange="handleSalary()">
+      <option>Sort By Salary</option>
+      <option value="high">High to Low</op>
+      <option value="low">Low to high</option>
+    </select>
+    <select id="role" onChange="handlePosition()">
+      <option >Sort By Role</option>
+      <option value="FSD">FSD</option>
+      <option value="Backend">Backend</op>
+      <option value="Frontend">Frontend</option>
+    </select>
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Job applied</th>
+            <th>Salary expected (LPA)</th>
+            <th>Add to bookmark</th>
+          </tr>
+        </thead>
+        <tbody id="body">
+          <!-- Append your output to tbody -->
+        </tbody>
+      </table>
+    </main>
+  </body>
+  <script>
+    //you need to code here
+    var table = document.querySelector("#body")
+    var jobArr = JSON.parse(localStorage.getItem("jobList"))
+    displayData(jobArr)
+
+    function handlePosition()
+    {
+      var select = document.querySelector("#role").value
+      var filterdList = jobArr.filter(function(elem){
+      return elem.role==select
+      })
+      displayData(filterdList)
+    }
+    function handleSalary()
+    {
+      var select = document.querySelector("#sortS").value
+      if(select=="high")
+      {
+        jobArr.sort(function(a,b){
+          return b.salary-a.salary
+        })
+        displayData(jobArr)
+      }
+      if(select=="low")
+      {
+        jobArr.sort(function(a,b){
+          return a.salary-b.salary
+        })
+      }
+      displayData(jobArr)
+    }
+    function handlename()
+    {
+      var select = document.querySelector("#sortN").value
+      if(select == "asc")
+      {
+        jobArr.sort(function(a,b)
+        {
+          var x = a.name.toUpperCase();
+          var y = b.name.toUpperCase();
+          if(x>y)
+          {
+            return 1;
+          }
+          if(x<y)
+          {
+            return -1;
+          }
+          return 0;
+        })
+        console.log(jobArr)
+        displayData(jobArr)
+      }
+      if(select == "dsc")
+      {
+        jobArr.sort(function(a,b)
+        {
+          var x = a.name.toUpperCase();
+          var y = b.name.toUpperCase();
+          if(x>y)
+          {
+            return -1;
+          }
+          if(x<y)
+          {
+            return 1;
+          }
+          return 0;
+        })
+        console.log(jobArr)
+        displayData(jobArr)
+      }
+    }
+
+    
+
+    //reduce
+    // var sum = jobArr.reduce(function (acc,elem){
+    //   return acc + Number(elem.Salary)
+    // }, 0);
+    // console.log(sum)
+
+    var bookMarkArr = JSON.parse(localStorage.getItem("bookmarks")) || [];
+
+    function displayData(data)
+    {
+      document.querySelector("#body").innerHTML = ""
+      // console.log(jobArr)
+      data.forEach(function (elem){
+        // console.log(elem)
+        var tr = document.createElement("tr");
+
+        var Name = document.createElement("td");
+        Name.innerText = elem.name;
+
+        var Email = document.createElement("td");
+        Email.innerText = elem.email;
+
+        var Role = document.createElement("td");
+        Role.innerText = elem.role;
+
+        var Salary = document.createElement("td");
+        Salary.innerText = elem.salary;
+
+        var Bookmark = document.createElement("td");
+        Bookmark.innerText = "Bookmark"
+        Bookmark.style.color = "blue"
+        Bookmark.style.cursor = "pointer"
+        Bookmark.addEventListener("click",function(){
+          bookMArkFunction(elem)
+        })
+
+        tr.append(Name,Email,Role,Salary,Bookmark)
+        table.append(tr)
+      })
+    }
+
+    function bookMArkFunction(elem)
+    {
+      // console.log(elem)
+      //store in local storage with key name
+      bookMarkArr.push(elem)
+      localStorage.setItem("bookmarks",JSON.stringify(bookMarkArr))
+
+    }
+  </script>
+</html>

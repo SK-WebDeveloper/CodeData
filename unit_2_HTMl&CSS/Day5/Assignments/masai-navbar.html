@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container
+        {
+            /* border: 1px solid teal; */
+            height: 200px;
+            font-family: sans-serif;
+        }
+        #upper
+        {
+            padding: 10px;
+            display: flex;
+            height: 25%;
+            background-color: #0A0103;
+            color: white;
+            text-align: center;
+        }
+        #bottom
+        {
+            display: flex;
+            width: 90%;
+            margin: auto;
+            margin-top: 20px;
+        }
+        #details
+        {
+            width: 70%;
+            display: flex;
+            font-size: 12px;
+            font-weight: 700;
+            margin-left:28%;
+            column-gap: 40px;
+        }
+        #upper>p
+        {
+            margin-left: 25%;
+            display: inline;
+            font-size: 14px;
+            font-weight: 700;
+            margin-right: 10px;
+            
+        }
+        #upper>button
+        {
+            background-color: #0A0103;
+            color: red;
+            border: 0px;
+            font-size: 12px;
+    
+            
+        }
+        #upper>button:hover
+        {
+            background-color: pink;
+            border-radius: 5px;
+            cursor: pointer;
+            height: 40px;
+            margin-top: 5px;
+            
+        }
+        img
+        {
+            margin-top: 5px;
+        }
+        details:hover
+        {
+            color: rgb(235, 137, 137);
+        }
+        #courses
+        {
+            margin-top: 10px;
+            font-size: 12px;
+            border: 0px;
+            font-weight: 700;
+        }
+        #details>button
+        {
+            font-weight: bold;
+            height: 30px;
+            margin-top: 5px;
+            text-align: center;
+            border: 1px solid rgb(238, 124, 124);
+            background-color: white;
+            border-radius: 5px;
+            color: rgb(238, 124, 124);
+            padding: 0px 15px
+        }
+        #details>button:hover
+        {
+            cursor: pointer;
+            background-color: rgb(247, 208, 215);
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="upper">
+            <p>Register for The Coding Classroom and learn the basics of web development for free.</p>
+            <button>REGISTER ></button>
+        </div>
+        <div id="bottom">
+            <div id="img">
+                <img src="https://www.masaischool.com/img/navbar/logo.svg" alt="">
+            </div>
+            <div id="details">
+                <div>
+                    <select id="courses">
+                        <option value="">COURSES</option>
+                        <option value="Web Developement">Web Developement</option>
+                    </select>
+                </div>
+                <div>
+                    <P>FEES & ISA</P>
+                </div>
+                <div>
+                    <P>ABOUT USE</P>
+                </div>
+                <div>
+                    <P>HIRE FROM US</P>
+                </div>
+                <div>
+                    <P>FAQ</P>
+                </div>
+                <div>
+                    <P>EVENTS</P>
+                </div>
+                <button>Login</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

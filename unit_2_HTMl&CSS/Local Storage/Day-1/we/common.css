@@ -1,0 +1,14 @@
+#navbar
+{
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(72, 72, 233);
+    padding: 10px;
+    font-size: 28px;
+}
+
+a
+{
+    text-decoration: none;
+    color: white;
+}

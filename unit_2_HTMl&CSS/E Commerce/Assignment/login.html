@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+    <form >
+        <input id="email" placeholder="Enter email id" type="text">
+        <input id="password" placeholder="Enter password" type="password">
+        <input type="submit">
+    </form>
+    
+</body>
+</html>
+
+<script>
+    var form = document.querySelector("form")
+    var userData  =JSON.parse(localStorage.getItem("userData"))
+    form.addEventListener("submit",function(event){
+        event.preventDefault()
+        var data = {
+            email:form.email.value,
+            password:form.password.value
+        }
+        function verify(data)
+        {
+            var flag = false;
+            userData.forEach(function(el){
+                if(userData.email==el.email && userData.password==el.password)
+                {
+                    flag = true
+                }
+            }) 
+        }
+        if(userData==null)
+        {
+            alert("Please create and account")
+            window.location.href = "signup.html";
+        }
+        else if(userData.email==data.email && userData.password==data.password)
+        {
+            alert("Login Successfull")
+            window.location.href = 'mens.html'
+            localStorage.setItem("signin",JSON.stringify(userData))
+        }
+        else if(userData.email==data.email || userData.password==data.password)
+        {
+            alert("Invalid username or pasword")
+        }
+    })
+</script>
