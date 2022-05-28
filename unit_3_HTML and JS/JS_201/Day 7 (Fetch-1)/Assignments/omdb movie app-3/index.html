@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            color: #93989E;
+        }
+
+        body {
+            background-color: #0F171E;
+        }
+
+        #navbar {
+            background-color: #1A232E;
+            font-family: sans-serif;
+            margin: auto;
+            margin-top: 2px;
+            display: flex;
+            /* width: 95%; */
+            height: 8px;
+            /* border: 1px solid black; */
+            position: sticky;
+            top: 0;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            padding: 2%;
+            align-items: center;
+            /* margin-bottom: 50px; */
+            justify-content: flex-end;
+            margin-bottom: 50px;
+        }
+
+        #display {
+            width: 50%;
+            display: flex;
+            /* border: 1px solid red; */
+            margin-top: 20px;
+            gap: 20px;
+            /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
+            margin: auto;
+        }
+
+        input {
+            padding: 5px;
+            border: 1px solid teal;
+        }
+
+        #picture {
+            /* border: 1px solid blue; */
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            width: 100%;
+            padding: 2px;
+            border-radius: 10px;
+        }
+
+        #poster {
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar">
+        <form action="">
+            <input type="text" id="movie" placeholder="Search The Movie......!">
+            <input type="submit">
+        </form>
+    </div>
+    <div id="display"></div>
+</body>
+
+</html>
+
+<script>
+    let form = document.querySelector('form');
+    let display = document.querySelector('#display')
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault()
+
+        let input = form.movie.value;
+
+        let url = `https://www.omdbapi.com/?t=${input}&apikey=d1c945fe`;
+
+        fetch(url)
+            .then(function (res) {
+                res.json() // collect the data
+                    .then(function (res) {
+                        // console.log(res)
+                        displayData(res)
+                    })
+            })
+            .catch(function (error) {
+                console.log(error)
+
+            })
+
+    })
+
+    // displayData()
+    function displayData(data) {
+
+        display.innerHTML = null;
+        console.log(data.Response);
+        if (data.Response == 'False') {
+            console.log(data.Response);
+            let img = document.createElement('img')
+            img.src = 'https://internetdevels.com/sites/default/files/public/blog_preview/404_page_cover.jpg'
+            img.style.height = '500px'
+            img.style.borderRadius = '10px'
+            display.append(img)
+            return;
+        }
+
+
+        // For the Movie Image
+        let box1 = document.createElement('div')
+        box1.setAttribute('id', 'picture')
+
+        let poster = document.createElement('img');
+        poster.src = data.Poster
+        poster.setAttribute('id', 'poster')
+
+        box1.append(poster)
+
+        // For Movie details
+
+        let box2 = document.createElement('div')
+        box2.setAttribute('id', 'details')
+
+        let title = document.createElement('h1');
+        title.innerText = `${data.Title}`
+
+        let rating = document.createElement('h2')
+
+        if (data.imdbRating > 8.5) {
+            rating.innerText = `IMDb: ${data.imdbRating} - Recommended`
+            rating.style.backgroundColor = 'green'
+            rating.style.width = '80%'
+            rating.style.borderRadius = '5px'
+        }
+        else {
+            rating.innerText = `IMDb: ${data.imdbRating}`
+        }
+
+        let r_date = document.createElement('h2')
+        r_date.innerText = `Released: ${data.Country}-${data.Released}`
+
+        let language = document.createElement('h3')
+        language.innerText = `Language: ${data.Language}`
+
+        let plot = document.createElement('p')
+        plot.innerText = `Plot: ${data.Plot}`
+
+        let writer = document.createElement('h3')
+        writer.innerText = `Writer: ${data.Writer}`
+
+        let genre = document.createElement('h3')
+        genre.innerText = `Genre: ${data.Genre}`
+
+        let director = document.createElement('h3')
+        director.innerText = `Director ${data.Director}`
+
+        let awards = document.createElement('h3')
+        awards.innerText = `Awards: ${data.Awards}`
+
+        box2.append(title, rating, r_date, language, plot, writer, genre, director, awards)
+
+
+        display.append(box1, box2)
+
+    }
+
+</script>

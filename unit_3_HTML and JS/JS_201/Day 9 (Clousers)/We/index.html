@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            width: 200px;
+        }
+
+        #movies {
+            border: 1px solid black;
+            width: 206px;
+            height: 200px;
+            border-top: none;
+            overflow: scroll;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" oninput="debounceFunction(main,1000)" id="query">
+    <div id="movies"></div>
+</body>
+
+</html>
+
+<script>
+
+    let movies_div = document.getElementById('movies');
+
+    let id;
+
+    //accept the input
+    //fetch the data
+    //append the data
+
+    async function searchMovies(q) {
+
+        // prepare url
+
+        try {
+            let url = `http://www.omdbapi.com/?s=${q}&apikey=d1c945fe`;
+            let res = await fetch(url)
+            let data = await res.json() // collect the data
+            return data.Search;
+            console.log(data)
+
+        } catch (error) {
+            console.log('error')
+        }
+    }
+
+    function appendMovies(movies){
+
+        movies_div.innerHTML = null;
+        movies.forEach(function(el){
+            let p = document.createElement("p");
+
+            p.innerText = el.Title;
+
+            movies_div.append(p);
+
+        })
+    }
+    async function main() {
+
+        let query = document.getElementById("query").value;
+
+        let response = searchMovies(query)
+
+        let data = await response // SearchMovies is return the data 
+                                // Async function always return a Promise
+
+        appendMovies(data)
+        console.log(data)
+        // console.log('query:',query)
+    }
+
+    function debounceFunction(func,delay){
+
+        if(id){
+            clearTimeout(id)
+        }
+        id = setTimeout(function(){
+            func();
+        },delay)
+    }
+
+
+    
+
+
+
+
+</script>

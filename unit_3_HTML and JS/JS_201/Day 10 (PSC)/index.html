@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+        }
+
+        #query {
+            color: rgb(236, 230, 230);
+            padding: 20px 100px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            background-color: rgb(94, 92, 92);
+            border-radius: 20px;
+            border-bottom: 1px solid grey;
+        }
+
+        #icon {
+            background-color: #FFEB00;
+            padding: 10px;
+            border-radius: 20px;
+            align-items: flex-end;
+            justify-content: center;
+            margin-top: 4px;
+        }
+
+        #div1 {
+            display: flex;
+            background-color: rgb(94, 92, 92);
+            width: 40%;
+            justify-content: space-between;
+            border-radius: 20px;
+        }
+
+        #main {
+            background-color: rgb(94, 92, 92);
+            width: 32%;
+            margin-left: 400px;
+            border-radius: 20px;
+            margin: auto;
+        }
+
+        #logo {
+            width: 15%;
+            height: 100px;
+            margin: auto;
+            margin-top: 200px;
+            margin-bottom: 30px;
+
+        }
+
+        #logo>img {
+            width: 100%
+        }
+
+        input+div {
+            margin-top: 8px;
+        }
+
+        #body {
+            background-image: url("https://thumbs.gfycat.com/BriefIgnorantBlackbuck-size_restricted.gif");
+            border: 1px solid black;
+            height: 650px;
+        }
+
+        #name {
+            font-size: 20px;
+        }
+        #container{
+            width: 80%;
+            margin: auto;
+            padding: 5px;
+        }
+        #box1{
+            display:flex;
+            justify-content: space-between;
+            
+        }
+        #box1>p:first-child {
+            color: #FFEB00;
+        }
+        #box1>p:last-child{
+            color: rgb(160, 152, 152);
+        }
+        #box2{
+            color: rgb(160, 152, 152) ;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="body">
+        <div id="logo">
+            <img src="https://i0.wp.com/www.highaltitudeapparel.com/wp-content/uploads/2017/02/star-wars-logo-trans.png?ssl=1"
+                alt="">
+        </div>
+        <div id="main">
+            <div id="div1">
+                <input type="text" id="query" placeholder="Search Characters" oninput="debounceFunction(main,1000)" />
+                <div>
+                    <i class="fa-solid fa-magnifying-glass" id="icon"></i>
+                </div>
+            </div>
+            <div id="display"></div>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
+
+<script src="https://kit.fontawesome.com/8cb0dd3b9e.js" crossorigin="anonymous"></script>
+
+
+<script>
+
+    let id;
+    async function starWars() {
+
+        let query = document.getElementById('query').value;
+
+        let url = `https://swapi.dev/api/people/?search=${query}`
+
+        let res = await fetch(url)
+
+        let data = await res.json()
+
+        console.log(data.results);
+
+        return data.results;
+    }
+
+    function append(data) {
+
+        let display = document.getElementById('display')
+
+        display.innerHTML = null;
+
+        data.forEach(function (el) {
+
+            let container = document.createElement('div')
+            container.setAttribute('id', 'container')
+
+            let box1 = document.createElement('div')
+            box1.setAttribute('id', 'box1')
+
+            let name = document.createElement('p')
+            name.innerText = el.name;
+            name.setAttribute('id', 'name')
+
+            let gender = document.createElement('p')
+            gender.innerText = el.gender
+
+            box1.append(name, gender)
+
+            let box2 = document.createElement('div')
+            box2.setAttribute('id', 'box2')
+
+            let yr = document.createElement('p')
+            yr.innerText = el.birth_year
+
+            box2.append(yr)
+
+            container.append(box1, box2)
+            display.append(container)
+        })
+    }
+
+    async function main() {
+        let data = await starWars()
+        append(data)
+    }
+
+    function debounceFunction(func, delay) {
+        if (id) {
+            clearTimeout(id)
+        }
+        id = setTimeout(function () {
+            func()
+        }, delay)
+    }
+
+
+</script>

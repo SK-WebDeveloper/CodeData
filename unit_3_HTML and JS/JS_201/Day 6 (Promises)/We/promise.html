@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img id="loading_img" src="https://i.giphy.com/media/l3nWhI38IWDofyDrW/200w.webp" alt="">
+
+</body>
+
+</html>
+
+<script>
+
+    let image = document.getElementById("loading_img")
+
+    function checkContent() {
+
+
+        //checking content if success return true
+
+        return true;
+    }
+
+    let content_promise = new Promise(function (resolve, reject) {
+
+        //if content is loaded, resolve the promise
+        //if content is not loaded, reject the promise
+
+        let content = checkContent()
+
+        setTimeout(function () {
+
+            if (content) {
+                //if content is true promise is resolved
+
+                resolve("Content is loaded");
+            }
+            else {
+                // promise is rejected
+
+                reject("Content is failed to load")
+            }
+        }, 3000)
+
+
+    });
+
+    console.log(content_promise)
+
+    content_promise.then(function (value) {
+        console.log("value:", value);
+        image.src = "https://i.giphy.com/media/Q81NcsY6YxK7jxnr4v/200w.webp"
+    })
+
+    content_promise.catch(function (error) {
+        console.log("error:", error);
+        image.src = "https://i.giphy.com/media/kEtm4mSTbxvH7j3uCu/200w.webp"
+    })
+</script>

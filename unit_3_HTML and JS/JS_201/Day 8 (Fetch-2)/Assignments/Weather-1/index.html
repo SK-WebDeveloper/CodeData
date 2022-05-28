@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            color: #93989E;
+        }
+
+        body {
+            background-color: #17354e;
+        }
+
+        #navbar {
+            background-color: #1A232E;
+            font-family: sans-serif;
+            margin: auto;
+            margin-top: 2px;
+            display: flex;
+            /* width: 95%; */
+            height: 8px;
+            /* border: 1px solid black; */
+            position: sticky;
+            top: 0;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            padding: 2%;
+            align-items: center;
+            /* margin-bottom: 50px; */
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+
+        button {
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        input {
+            padding: 5px 50px;
+            /* border: 1px solid teal; */
+            border-radius: 5px;
+        }
+
+        .gmap_canvas {
+            /* overflow: hidden; */
+            background: none !important;
+            height: 500px;
+            width: 600px;
+            margin: auto;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        #container {
+
+            width: 20%;
+            margin-bottom: 20px;
+        }
+
+        #container {
+            text-align: center;
+            box-shadow: rgba(247, 161, 161, 0.24) 0px 3px 8px;
+            border-radius: 10px;
+            margin-top: 20px;
+            /* border: 1px solid tomato; */
+            margin: auto;
+            margin-bottom: 20px;
+        }
+
+        /* img {
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        } */
+
+        p {
+            color: #93989E;
+            font-size: 14px;
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+
+        h1 {
+            color: #93989E;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar">
+        <input type="text" id="city" placeholder="Enter city name..!">
+        <button onclick="getData()">Search Weather</button>
+    </div>
+
+
+    <div id="container"></div>
+
+    <div class="mapouter">
+        <div class="gmap_canvas">
+            <iframe width="600" height="500" id="gmap_canvas" frameborder="0" scrolling="no" marginheight="0"
+                marginwidth="0">
+            </iframe>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script src="../Weather-1/index.js"></script>
