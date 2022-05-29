@@ -6,96 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Star Wars</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-        }
-
-        #query {
-            color: rgb(236, 230, 230);
-            padding: 20px 100px;
-            border: none;
-            outline: none;
-            font-size: 16px;
-            background-color: rgb(94, 92, 92);
-            border-radius: 20px;
-            border-bottom: 1px solid grey;
-        }
-
-        #icon {
-            background-color: #FFEB00;
-            padding: 10px;
-            border-radius: 20px;
-            align-items: flex-end;
-            justify-content: center;
-            margin-top: 4px;
-        }
-
-        #div1 {
-            display: flex;
-            background-color: rgb(94, 92, 92);
-            width: 40%;
-            justify-content: space-between;
-            border-radius: 20px;
-        }
-
-        #main {
-            background-color: rgb(94, 92, 92);
-            width: 32%;
-            margin-left: 400px;
-            border-radius: 20px;
-            margin: auto;
-        }
-
-        #logo {
-            width: 15%;
-            height: 100px;
-            margin: auto;
-            margin-top: 200px;
-            margin-bottom: 30px;
-
-        }
-
-        #logo>img {
-            width: 100%
-        }
-
-        input+div {
-            margin-top: 8px;
-        }
-
-        #body {
-            background-image: url("https://thumbs.gfycat.com/BriefIgnorantBlackbuck-size_restricted.gif");
-            border: 1px solid black;
-            height: 650px;
-        }
-
-        #name {
-            font-size: 20px;
-        }
-        #container{
-            width: 80%;
-            margin: auto;
-            padding: 5px;
-        }
-        #box1{
-            display:flex;
-            justify-content: space-between;
-            
-        }
-        #box1>p:first-child {
-            color: #FFEB00;
-        }
-        #box1>p:last-child{
-            color: rgb(160, 152, 152);
-        }
-        #box2{
-            color: rgb(160, 152, 152) ;
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
@@ -114,7 +25,7 @@
             <div id="display"></div>
         </div>
 
-
+        <div id="appenddata"></div>
     </div>
 
 </body>
@@ -153,6 +64,17 @@
             let container = document.createElement('div')
             container.setAttribute('id', 'container')
 
+            container.onclick = function () {
+
+                let logo = document.getElementById('logo')
+                logo.style.display = 'none';
+
+                let main = document.getElementById('main')
+                main.style.display = 'none';
+
+                displayData(el)
+            }
+
             let box1 = document.createElement('div')
             box1.setAttribute('id', 'box1')
 
@@ -190,6 +112,72 @@
         id = setTimeout(function () {
             func()
         }, delay)
+    }
+
+
+    function displayData(el) {
+
+        let value = document.getElementById('appenddata');
+        value.style.display = 'block';
+
+        let name = document.createElement('p')
+        name.innerText = el.name;
+
+        let detailsBox = document.createElement('div')
+        detailsBox.setAttribute('id', 'm1')
+
+        let box1 = document.createElement('div')
+        box1.setAttribute('id', 'm1b1')
+
+        let info = document.createElement('p');
+        info.innerText = 'Personal Info'
+
+        let yr = document.createElement('p');
+        yr.innerText = `Birth Year : ${el.birth_year}`
+
+        let gender = document.createElement('p')
+        gender.innerText = `Gender : ${el.gender}`
+
+        let height = document.createElement('p')
+        height.innerText = `Height : ${el.height}`
+
+        box1.append(info, yr, gender, height)
+
+        let box2 = document.createElement('div')
+        box2.setAttribute('id', 'm1b2')
+
+        let info1 = document.createElement('p');
+        info1.innerText = 'Anatomy'
+
+        let ec = document.createElement('p');
+        ec.innerText = `Eye Color : ${el.eye_color}`
+
+        let mass = document.createElement('p')
+        mass.innerText = `Mass : ${el.mass}`
+
+        let hc = document.createElement('p')
+        hc.innerText = `Hair Color : ${el.hair_color}`
+
+        let back = document.createElement('div');
+        back.setAttribute('id', 'back')
+        back.innerText = 'Go Back'
+
+        back.addEventListener('onclick',function(){
+
+            value.style.display = 'none';
+
+            let logo = document.getElementById('logo')
+            logo.style.display = 'block';
+
+            let main = document.getElementById('main')
+            main.style.display = 'block';
+        })
+
+        box2.append(info1, ec, mass, hc)
+        detailsBox.append(box1, box2)
+
+        value.append(name, detailsBox, back)
+
     }
 
 
