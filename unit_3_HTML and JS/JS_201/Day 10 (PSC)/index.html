@@ -162,15 +162,22 @@
         back.setAttribute('id', 'back')
         back.innerText = 'Go Back'
 
-        back.addEventListener('onclick',function(){
+        back.addEventListener('click',function(){
 
+            let query = document.getElementById('query')
+            query.value = null
+
+            
             value.style.display = 'none';
+            value.innerHTML = null;
 
             let logo = document.getElementById('logo')
             logo.style.display = 'block';
 
             let main = document.getElementById('main')
             main.style.display = 'block';
+
+            window.location.reload()
         })
 
         box2.append(info1, ec, mass, hc)
