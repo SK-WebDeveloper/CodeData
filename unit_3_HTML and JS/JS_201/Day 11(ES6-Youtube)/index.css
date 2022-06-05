@@ -1,0 +1,13 @@
+#results{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap: 20px;
+}
+#n_left>button{
+    border: 0;
+    padding: 15px;
+    width: 40px;
+}
+i{
+    width: 100%;
+}

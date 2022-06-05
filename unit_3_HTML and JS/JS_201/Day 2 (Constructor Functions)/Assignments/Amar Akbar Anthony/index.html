@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="display"></div>
+</body>
+</html>
+
+<script>
+
+    function Details(name,skill,location){
+        this.name = name;
+        this.skill = skill;
+        this.city = location;
+    }
+
+    function BorrowSkill(skill){
+        
+        let BorrowSkill = document.createElement('h1')
+        BorrowSkill.innerText = 'Borrow Skills'
+
+        let DisplaySkill = document.createElement('p');
+        DisplaySkill.innerText = `Hi my name is ${this.name} and I am a ${skill}`
+
+        let Display = document.getElementById('display')
+        Display.append(BorrowSkill,DisplaySkill)
+
+    }
+    let Amar = new Details('Amar','singer','Goa')
+    let Akbar = new Details('Akbar','chef','Mumbai')
+    let Anthony = new Details('Anthony','magician','Kashmir')
+
+    BorrowSkill.call(Amar, Akbar.skill)
+
+</script>

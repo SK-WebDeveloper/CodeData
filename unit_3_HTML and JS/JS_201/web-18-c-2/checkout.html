@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout</title>
+  <style>
+    form {
+      margin: 0 auto;
+      margin-top: 50px;
+      width: 30%;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      padding: 30px;
+      height: 250px;
+      position: relative;
+      border-radius: 10px;
+    }
+    input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+#confirm{
+  width: 11%;
+  position: absolute;
+  margin-left: 43%;
+  margin-top: -5%;
+}
+button {
+  background-color: #1A232E;
+  color: #93989E;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 20px;
+}
+  </style>
+
+</head>
+
+<body>
+  <div id="order-form">
+    <!--Add your form html element here-->
+    <!--In form, give #name,#number and #address as HTML id's to relevant input elements -->
+    <!-- confirm button with id "confirm" -->
+    <form action="">
+      <input type="text" id="name" placeholder="Enter your name" required>
+      <input type="number" id="number" placeholder="Mobile no" required>
+      <input type="text" id="address" placeholder="Enter Address" required>
+    </form>
+    <div id="confirm">
+      <button >Confirm</button>
+    </div>
+    
+  </div>
+</body>
+
+</html>
+
+<script src="./scripts/checkout.js"></script>

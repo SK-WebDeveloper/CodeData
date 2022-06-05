@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<style>
+  #bucket {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  #bucket>div {
+    margin: auto;
+    width: 80%;
+    border: 1px solid teal;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+
+  }
+
+  img {
+    width: 100%;
+    height: 40vh;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #93989E;
+  }
+
+  #remove_coffee {
+    border: 0;
+    background-color: #1A232E;
+    color: #93989E;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: auto;
+    padding: 5px 30px;
+    border-radius: 10px;
+  }
+
+  #div>p:nth-child(2) {
+    color: #93989E;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  #div>p:nth-child(3) {
+    color: #93989E;
+    font-weight: 600;
+  }
+  #confirm_checkout{
+    margin: auto;
+    width: 10%;
+  }
+  #confirm_checkout>button{
+    border: 0;
+    background-color: #1A232E;
+    color: #93989E;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-align: center;
+    padding: 10px 40px;
+    border-radius: 10px;
+  }
+  #total_amount{
+    color: #93989E;
+    font-size: 30px;
+    text-align: center;
+  }
+</style>
+
+<body>
+  <div id="total-div">
+    <h3 id="total_amount">
+      <!--Show bucket total here, do not add anything only Total value. Not even "Total - 1200Rs" but like this "1200" -->
+    </h3>
+  </div>
+  <div id="bucket">
+    <!--Show all coffee added to bucket here-->
+    <!-- add an remove button to each coffee so that you can remove that item from bucket, give the button HTML id as 'remove_coffee' -->
+  </div>
+
+  <!-- checkout link  -->
+  <div id="confirm_checkout">
+    <button >Checkout</button>
+  </div>
+  
+</body>
+
+</html>
+
+<script src="./scripts/bucket.js"></script>

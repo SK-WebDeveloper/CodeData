@@ -101,7 +101,7 @@
             .then(function (res) {
                 res.json() // collect the data
                     .then(function (res) {
-                        // console.log(res)
+                        console.log(res)
                         displayData(res)
                     })
             })
@@ -114,7 +114,7 @@
 
     // displayData()
     function displayData(data) {
-
+        
         display.innerHTML = null;
         console.log(data.Response);
         if (data.Response == 'False') {
