@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignUp Page</title>
+    <link rel="stylesheet" href="./style/navbar.css" />
+    <link rel="stylesheet" href="./style/signup.css">
+  </head>
+  <body>
+    <div id="navbar"></div>
+    <div>
+      <h1>SignUp Here</h1>
+      <form id="signup" onsubmit="storeData(event)">
+        <label for="">Name</label><br />
+        <input id="name" type="text" placeholder="Enter Your Name" /><br />
+        <label for="">Surname</label><br />
+        <input id="surname" type="text" placeholder="Enter Your Surname" /><br />
+        <label for="">Mobile No</label><br />
+        <input id="mobile" type="number" placeholder="Enter Mobile No" /><br />
+        <label for="">E-mail</label><br />
+        <input id="email" type="text" placeholder="Enter Email Id" /><br />
+        <label for="">Create Username</label>
+        <input id="username" type="text" placeholder="Create Username">
+        <label for="">Create Password</label>
+        <input id="password" type="text" placeholder="Create Password">
+        <input type="submit" id="sign"/>
+      </form>
+      <p>Already have an account click here to Signin <i class="fa-solid fa-arrow-right-long"></i> <a href="./signin.html">Sign-In</a></p>
+    </div>
+  </body>
+</html>
+<script src="https://kit.fontawesome.com/8cb0dd3b9e.js" crossorigin="anonymous"></script>
+<script src="./script/index.js" type="module"></script>
+<script src="./script/signup.js"></script>
