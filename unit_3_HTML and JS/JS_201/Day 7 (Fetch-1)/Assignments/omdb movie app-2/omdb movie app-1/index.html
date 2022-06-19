@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #display {
+            width: 60%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            column-gap: 30px;
+            margin: auto;
+        }
+
+        #display>div {
+            text-align: center;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        img {
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        p {
+            color: #93989E;
+            font-size: 14px;
+            padding-bottom: 10px;
+            font-weight: 700;
+        }
+
+        h2 {
+            color: #93989E;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <input type="text" id="movie">
+        <input type="submit">
+    </form>
+    <div id="display"></div>
+</body>
+
+</html>
+
+<script>
+    let form = document.querySelector('form');
+    let display = document.querySelector('#display')
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault()
+
+        let input = form.movie.value;
+
+        let url = `https://www.omdbapi.com/?t=${input}&apikey=d1c945fe`;
+
+        fetch(url)
+            .then(function (res) {
+                res.json() // collect the data
+                    .then(function (res) {
+                        // console.log(res)
+                        displayData(res)
+                    })
+            })
+            .catch(function (error) {
+                console.log(error)
+            })
+
+    })
+
+    function displayData(data) {
+        display.innerHTML = null;
+        console.log(data)
+        // For the Movie Image
+        let box1 = document.createElement('div')
+        box1.setAttribute('id', 'picture')
+
+        let poster = document.createElement('img');
+        poster.src = data.Poster
+
+        let title = document.createElement('h2');
+        title.innerText = `${data.Title}`
+
+        box1.append(poster, title)
+
+        display.append(box1)
+
+    }
+
+    displayData()
+
+</script>

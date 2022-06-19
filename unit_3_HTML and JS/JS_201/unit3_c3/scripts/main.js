@@ -1,5 +1,4 @@
 let form = document.querySelector('form')
-
 form.addEventListener('submit',function(event){
 
     event.preventDefault();
@@ -9,7 +8,7 @@ form.addEventListener('submit',function(event){
         address:form.address.value,
         amount:form.amount.value
     }
-    // console.log(data)
+    console.log(data)
     localStorage.setItem('user',JSON.stringify(data))
     form.name.value = ''
     form.email.value = ''

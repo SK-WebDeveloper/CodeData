@@ -1,14 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather</title>
-    <link rel="stylesheet" href="./index.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App Geolocation</title>
+    <style>
+      .gmap_canvas {
+        overflow: hidden;
+        background: none !important;
+        height: 500px;
+        width: 600px;
+      }
+      #report_map {
+        display: flex;
+      }
+      #report_map > div {
+        width: 50%;
+      }
+      #forecast {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-top: 10px;
+      }
+      #forecast>div{
+        border: 1px solid teal;
+      }
+      form{
+        margin: auto;
+        width: 21%;
+      }
+      form>input{
+        border: 1px solid black;
+        outline:none ;
+        padding: 5px;
+      }
+      button{
+        border: none;
+        padding: 5px;
+        border-radius: 5px;
+        background-color: teal;
+        color: white;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form action="">
+      <input id="city" type="text" placeholder="Enter city name" />
+      <button id="btn" onclick="getLocationWeather()">Get Weather</button>
+    </form>
     
-</body>
+
+    <div id="report_map">
+      <div id="weatherinfo"></div>
+      <div class="mapouter">
+        <div class="gmap_canvas">
+          <iframe
+            width="600"
+            height="500"
+            id="gmap_canvas"
+            frameborder="0"
+            scrolling="no"
+            marginheight="0"
+            marginwidth="0"
+          >
+          </iframe>
+        </div>
+      </div>
+    </div>
+    <div id="forecast">
+    </div>
+  </body>
 </html>
-<script src="./index.js"></script>
+<script>
+  const my_key = "f989c9a7974d5a35e0d153ff9dfab32a";
+
+  // document.getElementById("btn").addEventListener("click", getWeather);
+
+  async function getWeather(lat, long) {
+    let url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=minutely,hourly&appid=${my_key}`;
+
+    let res = await fetch(url);
+
+    let data = await res.json();
+    append(data.daily);
+    console.log(data.daily);
+  }
+  function append(data) {
+    let container = document.getElementById("forecast");
+    container.innerHTML = null;
+    data.forEach(function (el) {
+      let card = document.createElement("div");
+      let p2 = document.createElement("p");
+      p2.innerText = `Max Temp: ${el.temp.max}`;
+
+      let p3 = document.createElement("p");
+      p3.innerText = `Min Temp: ${el.temp.min}`;
+      card.append(p2, p3);
+
+      container.append(card);
+    });
+  }
+
+  function getLocationWeather() {
+    navigator.geolocation.getCurrentPosition(success);
+
+    function success(position) {
+      const lat = position.coords.latitude;
+      const long = position.coords.longitude;
+      let iframe = document.getElementById("gmap_canvas");
+      iframe.src = `https://maps.google.com/maps?lat=${lat}&lon=${long}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+
+      getWeather(lat, long);
+      console.log(lat);
+      console.log(long);
+    }
+  }
+</script>

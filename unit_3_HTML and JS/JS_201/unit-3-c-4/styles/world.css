@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#navbar{
+    display: flex;
+    justify-content: space-between;
+    padding: 1%;
+    margin-bottom: 10px;
+    border: 1px solid teal;
+    background-color: rgb(130, 209, 209);
+}
+#countrys{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+#options{
+    display: flex;
+}
+#sidebar{
+    width: 20%;
+    
+}
+#news_result{
+    width: 80%;
+    
+}
+#user_img{
+    width: 100%;
+}

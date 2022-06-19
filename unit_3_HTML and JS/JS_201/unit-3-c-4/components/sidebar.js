@@ -1,0 +1,9 @@
+function sidebar(){
+
+    return `<img src="" alt="" id="user_img">
+    <h3 id="user_name"></h3>
+    <p id="user_email"></p>
+    <p id="user_country"></p>`
+}
+
+export default sidebar

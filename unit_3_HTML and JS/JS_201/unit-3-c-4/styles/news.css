@@ -1,0 +1,23 @@
+*{
+    margin:0;
+    padding: 0;
+}
+#navbar{
+    display:flex;
+    padding: 1%;
+    justify-content: space-between;
+    border: 1px solid teal;
+    background-color: rgb(183, 240, 248);
+}
+
+#news{
+    display: flex;
+}
+#sidebar{
+    width: 20%;
+    
+}
+#detailed_news{
+    width: 80%;
+    
+}
