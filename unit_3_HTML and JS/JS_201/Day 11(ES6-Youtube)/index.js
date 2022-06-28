@@ -31,7 +31,7 @@ trending()
 let appendTrending = (data) => {
 
     console.log(data)
-    let container = document.getElementById('results');
+    let container = document.getElementById('cards');
     container.innerHTML = null;
     data.forEach(({ id, snippet: { title } }) => {
         console.log(id)
@@ -43,17 +43,17 @@ let appendTrending = (data) => {
         iframe.src = `https://www.youtube.com/embed/${id}`
         iframe.allow = 'fullscreen'
 
-        let h3 = document.createElement('h3')
-        h3.innerText = title
+        let p = document.createElement('p')
+        p.innerText = title
 
-        div.append(iframe,h3)
+        div.append(iframe,p)
         container.append(div);
     })
 }
 let append = (data) => {
 
     console.log(data)
-    let container = document.getElementById('results');
+    let container = document.getElementById('cards');
     container.innerHTML = null;
     data.forEach(({ id:{videoID}, snippet: { title } }) => {
         console.log(videoID)
@@ -65,10 +65,14 @@ let append = (data) => {
         iframe.src = `https://www.youtube.com/embed/${videoId}`
         iframe.allow = 'fullscreen'
 
-        let h3 = document.createElement('h3')
-        h3.innerText = title
+        let v_title = document.createElement('div')
+        v_title.setAttribute('class','title')
 
-        div.append(iframe,h3)
+        let p = document.createElement('p')
+        p.innerText = title
+
+        v_title.append(p)
+        div.append(iframe,v_title)
         container.append(div);
     })
 }

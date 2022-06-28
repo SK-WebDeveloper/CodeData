@@ -7,13 +7,8 @@ function userData(n,s,m,e,u,p){
     this.username = u;
     this.password = p;
 }
-
 let form = document.querySelector("#signup")
-form.addEventListener("submit", storeData())
-
-function storeData(event){
-
-    event.preventDefault()
+function SignupData(){
     let name = form.name.value
     let surname = form.surname.value
     let mobile = form.mobile.value
@@ -23,10 +18,8 @@ function storeData(event){
 
     let d1 = new userData(name,surname,mobile,email,username,password)
 
-    let data = JSON.parse(localStorage.getItem('userData')) || []
+    let data = JSON.parse(localStorage.getItem('userData')) || {}
 
-    data.push(d1)
-    localStorage.setItem('userData',JSON.stringify(data))
+    localStorage.setItem('userData',JSON.stringify(d1))
     form.reset()
-
 }
