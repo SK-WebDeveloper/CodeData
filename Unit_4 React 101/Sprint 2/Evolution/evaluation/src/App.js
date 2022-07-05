@@ -6,8 +6,8 @@ import VideoPlayer from "./Components/video/Video";
 export default function App() {
   return (
     <div className="App">
-      {/* <VideoPlayer /> */}
-      <Users />
+      <VideoPlayer />
+      {/* <Users /> */}
     </div>
   );
 }

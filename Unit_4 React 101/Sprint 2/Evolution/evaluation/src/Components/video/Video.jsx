@@ -2,9 +2,12 @@ import { useRef } from "react";
 import Button from "../common/Button";
 
 function VideoPlayer() {
-
   const ref = useRef(null);
 
+  const handlePlay = () => {
+    console.log("hi");
+    ref.current.play();
+  };
   return (
     <div>
       <video data-testid="video-container" width="400" controls ref={ref}>
@@ -14,13 +17,23 @@ function VideoPlayer() {
         />
       </video>
       <div>
-        <Button onClick = {() => {ref.current.play()}}>PLAY</Button>
-        <Button onClick = {() => {ref.current.pause()}}>PAUSE</Button>
-        <Button onClick = {() => {
-          const time = ref.current.currentTime;
-          ref.current.currentTime = time + 30}}>SKIP 30 SECONDS</Button>
+        <Button onClick={handlePlay}>PLAY</Button>
+        <Button
+          onClick={() => {
+            ref.current.pause();
+          }}
+        >
+          PAUSE
+        </Button>
+        <Button
+          onClick={() => {
+            const time = ref.current.currentTime;
+            ref.current.currentTime = time + 30;
+          }}
+        >
+          SKIP 30 SECONDS
+        </Button>
       </div>
-      
     </div>
   );
 }
