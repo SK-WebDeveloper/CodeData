@@ -1,0 +1,20 @@
+#spinner{
+    width: 200px;
+    height: 200px;
+    border: 10px solid rgb(189, 168, 168);
+    margin: auto;
+    border-radius: 50%;
+    border-top-color: blue;
+    border-bottom-color: pink;
+    transform: translate();
+    animation: 4s linear infinite spinner;
+}
+
+@keyframes spinner {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
